@@ -1,0 +1,31 @@
+body{
+    background-color: blanchedalmond;
+}
+
+.display{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    gap: 10px;
+}
+
+.item-box{
+    border: solid 2px black;
+    width: 400px;
+    padding-left: 5px;
+    background-color: azure;
+}
+
+.propeties{
+    color: blueviolet;
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.price{
+    color: red;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
