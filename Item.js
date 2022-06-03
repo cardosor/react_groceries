@@ -5,14 +5,14 @@ class Item extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.setState({paid:true});
+        this.setState({isPurchased:true});
         this.props.item.isPurchased = true;
     }
 
     render(){
         const item = this.props.item;
-        const receipt = !this.state.paid ? 
-        <div className="item-box">
+        const displayItem =
+            <div className="item-box">
                 <ul>
                     <li>
                         <h2>Name: {item.item}</h2>
@@ -26,13 +26,11 @@ class Item extends React.Component {
                         </li>
                     </ul>
                 </ul>
-                
+                <button onClick={this.handleSubmit}>Buy</button>
             </div>
-            :
-            ""
         return(
             <React.Fragment>
-                {receipt}
+                {!this.state.isPurchased && displayItem}
             </React.Fragment>
         )
         

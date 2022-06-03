@@ -2,11 +2,9 @@ class App extends React.Component {
     state = {
         list: list,
         item: '',
-    }
-
-    handleFilter = (event) => {
-        const tempReceipts = receipts.filter(receipt => receipt.person.toLowerCase().includes(event.target.value.toLowerCase()))
-        this.setState({receipts: tempReceipts});
+        brand:'',
+        units:'',
+        quantity:0
     }
 
     handleChange = (e) => {
@@ -17,20 +15,23 @@ class App extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e);
+        const newItem = {
+            item: this.state.item,
+            brand: this.state.brand,
+            units: this.state.units,
+            quantity: this.state.quantity,
+            isPurchased: false
+        }
+        const list = [...this.state.list, newItem]
+        this.setState({
+            list: list,
+            item: '',
+            brand:'',
+            units:'',
+            quantity:0
+        })
+        
     }
-
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     const receipts = this.state.receipts.filter(receipt => receipt.person !== event.target.name);
-    //     // const receipts = this.state.receipts.map((obj)=>{
-    //     //     if(obj.person === event.target.name){
-    //     //         obj.paid = true;
-    //     //     }
-    //     //     return obj;
-    //     // })
-    //     this.setState({receipts});
-    // }
 
     render(){
         return(
@@ -40,11 +41,11 @@ class App extends React.Component {
                     <label htmlFor="name">Item:</label>
                     <input type="text" value={this.state.item} onChange={this.handleChange} id="item"></input>
                     <label htmlFor="brand">Brand:</label>
-                    <input type="text"  id="brand"></input>
+                    <input type="text" value={this.state.brand} onChange={this.handleChange} id="brand"></input>
                     <label htmlFor="units">Units:</label>
-                    <input type="text" id="units"></input>
+                    <input type="text" value={this.state.units} onChange={this.handleChange} id="units"></input>
                     <label htmlFor="quantity">Quantity:</label>
-                    <input type="Number" min="0" id="quantity"></input>
+                    <input type="Number" value={this.state.quantity} onChange={this.handleChange} min="0" id="quantity"></input>
                     <input type="submit"></input>
                 </form>
                 <hr/>
